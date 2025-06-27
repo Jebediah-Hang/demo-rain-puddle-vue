@@ -23,6 +23,13 @@ export function Thunder({ rainEnabled }: { rainEnabled: boolean }) {
     [sprites]
   );
 
+  React.useEffect(() => {
+    return () => {
+      thunderSounds.stop();
+      thunderSounds.unload();
+    };
+  }, [thunderSounds]);
+
   const noise = React.useMemo(() => createNoise2D(), []);
 
   const thunderingDuration = React.useRef(-1);

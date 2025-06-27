@@ -100,45 +100,44 @@ export default function App() {
       <div
         style={{
           position: "absolute",
-          bottom: "7rem",
-          right: "1rem",
+          top: "2rem",
+          left: "50%",
           zIndex: 1000,
-          display: "flex",
-          flexDirection: "column",
-          alignItems: "flex-end",
-          justifyContent: "flex-end",
-          gap: "0.5rem",
+          transform: "translate(-50%, 0%)",
+          color: "white",
+          fontSize: "1rem",
+          textAlign: "center",
+          pointerEvents: "none",
         }}
       >
         {!rainStarted && (
-          <button
-            style={{
-              padding: "8px 16px",
-              fontSize: "16px",
-              backgroundColor: "#ffffff",
-              color: "#000000",
-              border: "none",
-              borderRadius: "4px",
-              cursor: "pointer",
-              margin: 0,
-              width: "12rem",
-            }}
-            onClick={onRainStart}
-          >
-            Start
-          </button>
+          <>
+            <button
+              style={{
+                padding: "0.5rem 1rem",
+                fontSize: "1rem",
+                backgroundColor: "rgba(255, 255, 255, 0.2)",
+                color: "white",
+                border: "none",
+                borderRadius: "0.25rem",
+                cursor: "pointer",
+                pointerEvents: "auto",
+              }}
+              onClick={onRainStart}
+            >
+              Click to make it rain!
+            </button>
+            <p
+              style={{
+                marginTop: "0.5rem",
+                fontSize: "0.8rem",
+                color: "rgba(255, 255, 255, 0.7)",
+              }}
+            >
+              Best with sound
+            </p>
+          </>
         )}
-        <p
-          style={{
-            color: "#ffffff",
-            fontSize: "16px",
-            margin: 0,
-            fontFamily: "sans-serif",
-            textAlign: "right",
-          }}
-        >
-          Best with sound
-        </p>
       </div>
     </>
   );

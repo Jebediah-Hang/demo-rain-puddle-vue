@@ -30,6 +30,16 @@ export function Rain({
     []
   );
 
+  React.useEffect(() => {
+    return () => {
+      rainSound.stop();
+      nightSound.stop();
+
+      rainSound.unload();
+      nightSound.unload();
+    };
+  }, [rainSound, nightSound]);
+
   const playingSound = React.useRef(false);
   useFrame(() => {
     if (rainProgressRef.current > 0 && !playingSound.current) {
