@@ -5,6 +5,7 @@ import {
   EffectComposer,
   ToneMapping,
 } from "@react-three/postprocessing";
+import { Perf } from "r3f-perf";
 import { Floor } from "./Floor";
 import { Lights } from "./Lights";
 import { Rain } from "./Rain";
@@ -18,12 +19,12 @@ export default function App() {
       <Canvas
         shadows={false}
         gl={{
-          powerPreference: "high-performance",
           antialias: false,
         }}
         style={{
           filter: "contrast(1.2) saturate(1.1) brightness(1.1)",
         }}
+        raycaster={null}
       >
         <OrbitControls
           makeDefault
@@ -42,7 +43,7 @@ export default function App() {
           <Floor rainProgressRef={rainProgressRef} />
         </Rain>
 
-        {/* <Perf /> */}
+        <Perf />
 
         <EffectComposer multisampling={0}>
           <Bloom
@@ -100,10 +101,10 @@ export default function App() {
       <div
         style={{
           position: "absolute",
-          top: "2rem",
+          top: "50%",
           left: "50%",
           zIndex: 1000,
-          transform: "translate(-50%, 0%)",
+          transform: "translate(-50%, -50%)",
           color: "white",
           fontSize: "1rem",
           textAlign: "center",
@@ -116,8 +117,8 @@ export default function App() {
               style={{
                 padding: "0.5rem 1rem",
                 fontSize: "1rem",
-                backgroundColor: "rgba(255, 255, 255, 0.2)",
-                color: "white",
+                backgroundColor: "white",
+                color: "#121212",
                 border: "none",
                 borderRadius: "0.25rem",
                 cursor: "pointer",
@@ -125,7 +126,7 @@ export default function App() {
               }}
               onClick={onRainStart}
             >
-              Click to make it rain!
+              Click to Start!
             </button>
             <p
               style={{

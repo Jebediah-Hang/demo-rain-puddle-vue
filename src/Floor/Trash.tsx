@@ -1,5 +1,6 @@
-import { Decal, useTexture } from "@react-three/drei";
-import { AdditiveBlending, MathUtils } from "three";
+import { Circle, useTexture } from "@react-three/drei";
+import { useLayoutEffect } from "react";
+import { AdditiveBlending, MathUtils, RepeatWrapping } from "three";
 
 export function Trash() {
   const maps = useTexture({
@@ -11,14 +12,24 @@ export function Trash() {
     aoMap: "/demo-2023-rain-puddle/decals/trash/shmpulh_4K_AO.jpg",
   });
 
+  useLayoutEffect(() => {
+    for (const key in maps) {
+      const map = maps[key];
+      if (map) {
+        map.wrapS = map.wrapT = RepeatWrapping;
+        map.repeat.set(2, 2);
+      }
+    }
+  }, []);
+
   return (
     <>
-      <Decal
+      <Circle
+        args={[0.5]}
         renderOrder={1}
-        scale={0.6}
         frustumCulled={false}
         rotation-z={MathUtils.degToRad(30)}
-        position={[0, 0.1, 0.1]}
+        position={[0, 0, 0]}
       >
         <meshStandardMaterial
           {...maps}
@@ -28,22 +39,7 @@ export function Trash() {
           transparent
           blending={AdditiveBlending}
         />
-      </Decal>
-      <Decal
-        renderOrder={1}
-        scale={0.5}
-        frustumCulled={false}
-        position={[0, -0.4, -0.2]}
-      >
-        <meshStandardMaterial
-          {...maps}
-          polygonOffset
-          polygonOffsetFactor={-3}
-          depthWrite={false}
-          transparent
-          blending={AdditiveBlending}
-        />
-      </Decal>
+      </Circle>
     </>
   );
 }

@@ -98,23 +98,12 @@ export const Drops = React.forwardRef<THREE.InstancedMesh, DropsProps>(
           return dot(p, vec2(a,b) ) - r1;
         }
   
-        float blur(float steps) {
-          vec2 coord = vUv - 0.5;
-          coord *= 10.0;
-  
-          // Get n droplets around this one and average their distance
-          float total = 0.0;
-          for (float i = 0.0; i < steps; i++) {
-            float dropletDistance = sdUnevenCapsule(coord, 0.05, 0.0, 2.0);
-            dropletDistance = 1.0 - smoothstep(0.0, 0.05, dropletDistance);
-            total += dropletDistance;
-            coord += vec2(0.0, 0.2);
-          }
-          return total / steps;
-        }
-  
         void main() {
-          float dropletDistance = blur(5.0);
+           vec2 coord = vUv - 0.5;
+          coord *= 10.0;
+          float dropletDistance = sdUnevenCapsule(coord, 0.05, 0.0, 2.0);
+          dropletDistance = 1.0 - smoothstep(0.0, 0.05, dropletDistance);
+
           float rainProgress = smoothstep(0.0, 0.5, uRainProgress);
           rainProgress = clamp(rainProgress, 0.0, 1.0);
           csm_DiffuseColor.a = dropletDistance * 0.1 * rainProgress;

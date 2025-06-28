@@ -56,8 +56,7 @@ export function PuddleMaterial({
 			vec3 csm_PuddleNormal;
 			float csm_PuddleNormalMask;
 
-      #define MAX_RADIUS 2
-      #define DOUBLE_HASH 0
+      #define MAX_RADIUS 1
       #define HASHSCALE1 .1031
       #define HASHSCALE3 vec3(.1031, .1030, .0973)
 
@@ -86,11 +85,7 @@ export function PuddleMaterial({
         for (int j = -MAX_RADIUS; j <= MAX_RADIUS; ++j) {
             for (int i = -MAX_RADIUS; i <= MAX_RADIUS; ++i) {
               vec2 pi = p0 + vec2(i, j);
-              #if DOUBLE_HASH
-              vec2 hsh = hash22(pi);
-              #else
               vec2 hsh = pi;
-              #endif
               vec2 p = pi + hash22(hsh);
 
               float t = fract(0.3*time + hash12(hsh));
@@ -149,14 +144,15 @@ export function PuddleMaterial({
 				gln_tFBMOpts noiseNormalNoiseOpts = gln_tFBMOpts(1.0, 0.5, 2.0, 0.5, 1.0, 4, false, false);
 				vec3 noiseNormalPosition = vPosition * 10.0;
 				noiseNormalPosition.y += uTime * 1.0;
-				float noiseX = gln_sfbm(noiseNormalPosition, noiseNormalNoiseOpts);
-				float noiseY = gln_sfbm(noiseNormalPosition + 0.5, noiseNormalNoiseOpts);
-				float noiseZ = gln_sfbm(noiseNormalPosition + 1.0, noiseNormalNoiseOpts);
-				vec3 normalNoise = vec3(noiseX, noiseY, noiseZ);
-				normalNoise = normalize(normalNoise);
+				// float noiseX = gln_sfbm(noiseNormalPosition, noiseNormalNoiseOpts);
+				// float noiseY = gln_sfbm(noiseNormalPosition + 0.5, noiseNormalNoiseOpts);
+				// float noiseZ = gln_sfbm(noiseNormalPosition + 1.0, noiseNormalNoiseOpts);
+				// vec3 normalNoise = vec3(noiseX, noiseY, noiseZ);
+				// normalNoise = normalize(normalNoise);
 
 				// // Peturb puddle normals
-				csm_PuddleNormal = perturbNormal(csm_PuddleNormal, normalNoise, 0.02);
+				// csm_PuddleNormal = perturbNormal(csm_PuddleNormal, normalNoise, 0.02);
+				csm_PuddleNormal = csm_PuddleNormal;
 
 				// // Roughness
         float prevRoughness = csm_Roughness;
