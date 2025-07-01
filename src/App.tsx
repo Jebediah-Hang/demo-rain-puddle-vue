@@ -5,7 +5,6 @@ import {
   EffectComposer,
   ToneMapping,
 } from "@react-three/postprocessing";
-import { Perf } from "r3f-perf";
 import { Floor } from "./Floor";
 import { Lights } from "./Lights";
 import { Rain } from "./Rain";
@@ -42,8 +41,6 @@ export default function App() {
         <Rain rainProgressRef={rainProgressRef}>
           <Floor rainProgressRef={rainProgressRef} />
         </Rain>
-
-        <Perf />
 
         <EffectComposer multisampling={0}>
           <Bloom
