@@ -10,6 +10,8 @@ import { Lights } from "./Lights";
 import { Rain } from "./Rain";
 import { useMakeRain } from "./useMakeRain";
 
+console.log("test")
+
 export default function App() {
   const [rainProgressRef, onRainStart, rainStarted] = useMakeRain();
 
