@@ -1,6 +1,6 @@
 # demo-rain-puddle-vue
 
-A simple rain and puddle simulation with splashes and ripples. Learn from [demo-2023-rain-puddle](https://github.com/Faraz-Portfolio/demo-2023-rain-puddle), built with Vue and @tresjs.
+A simple rain and puddle simulation with splashes and ripples. Learn from [demo-2023-rain-puddle](https://github.com/Faraz-Portfolio/demo-2023-rain-puddle). Built with Vue and [@tresjs](https://docs.tresjs.org).
 
 ## Project Setup
 
