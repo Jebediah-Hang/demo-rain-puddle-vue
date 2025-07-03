@@ -1,7 +1,21 @@
-# Puddle in rain
+# demo-rain-puddle-vue
 
-View Live: https://farazzshaikh.com/demos/demo-2023-rain-puddle
+A simple rain and puddle simulation with splashes and ripples. Learn from [demo-2023-rain-puddle](https://github.com/Faraz-Portfolio/demo-2023-rain-puddle), built with Vue and @tresjs.
 
-https://github.com/user-attachments/assets/ca9eca00-8bcc-4d6e-b490-bb97100e3370
+## Project Setup
 
-A simple rain and puddle simulation with splashes and ripples. 
+```sh
+npm install
+```
+
+### Compile and Hot-Reload for Development
+
+```sh
+npm run dev
+```
+
+### Type-Check, Compile and Minify for Production
+
+```sh
+npm run build
+```

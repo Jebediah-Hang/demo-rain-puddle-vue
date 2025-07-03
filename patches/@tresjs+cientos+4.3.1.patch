@@ -1,0 +1,13 @@
+diff --git a/node_modules/@tresjs/cientos/dist/core/materials/customShaderMaterial/index.vue.d.ts b/node_modules/@tresjs/cientos/dist/core/materials/customShaderMaterial/index.vue.d.ts
+index c1f22de..e447477 100644
+--- a/node_modules/@tresjs/cientos/dist/core/materials/customShaderMaterial/index.vue.d.ts
++++ b/node_modules/@tresjs/cientos/dist/core/materials/customShaderMaterial/index.vue.d.ts
+@@ -1,6 +1,7 @@
+ import { Fn } from '@vueuse/core';
++import { Material } from 'three';
+ interface CustomShaderMaterialProps {
+-    baseMaterial: Fn;
++    baseMaterial: Fn | (new (...args: any[]) => Material);
+     vertexShader?: string;
+     fragmentShader?: string;
+     silent?: boolean;
